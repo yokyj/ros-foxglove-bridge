@@ -157,6 +157,12 @@ elseif("$ENV{ROS_VERSION}" STREQUAL "2")
       ros2_foxglove_bridge/src/ros2_foxglove_bridge.cpp
     )
     target_include_directories(foxglove_bridge SYSTEM PRIVATE ${rclcpp_INCLUDE_DIRS})
+    target_include_directories(foxglove_bridge
+      PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/foxglove_bridge_base/include>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/ros2_foxglove_bridge/include>
+        $<INSTALL_INTERFACE:include>
+    )
     target_link_libraries(foxglove_bridge foxglove_bridge_component foxglove_bridge_base)
     ament_target_dependencies(foxglove_bridge rclcpp)
     enable_strict_compiler_warnings(foxglove_bridge)
