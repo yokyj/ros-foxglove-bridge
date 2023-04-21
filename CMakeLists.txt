@@ -13,12 +13,8 @@ project(foxglove_bridge LANGUAGES CXX VERSION 0.5.3)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-# set(CMAKE_CROSSCOMPILING TRUE)
-# set(CMAKE_SYSTEM_NAME Linux)
 set(CMAKE_CC_COMPILER  /aarch64-none-linux-gnu-gcc)
 set(CMAKE_CXX_COMPILER /aarch64-none-linux-gnu-g++)
-# set(CMAKE_LINKER aarch64-none-linux-gnu-ld)
-
 macro(enable_strict_compiler_warnings target)
   if (MSVC)
     target_compile_options(${target} PRIVATE /WX /W4)
