@@ -163,7 +163,8 @@ elseif("$ENV{ROS_VERSION}" STREQUAL "2")
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/ros2_foxglove_bridge/include>
         $<INSTALL_INTERFACE:include>
     )
-    target_link_libraries(foxglove_bridge foxglove_bridge_component foxglove_bridge_base)
+    target_link_libraries(foxglove_bridge foxglove_bridge_base)
+    target_link_libraries(foxglove_bridge foxglove_bridge_component)
     ament_target_dependencies(foxglove_bridge rclcpp)
     enable_strict_compiler_warnings(foxglove_bridge)
   else()
