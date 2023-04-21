@@ -923,9 +923,11 @@ private:
 
 }  // namespace foxglove_bridge
 
-#include <rclcpp_components/register_node_macro.hpp>
+int main(int argc, char *argv[])
+{
 
-// Register the component with class_loader.
-// This acts as a sort of entry point, allowing the component to be discoverable when its library
-// is being loaded into a running process.
-RCLCPP_COMPONENTS_REGISTER_NODE(foxglove_bridge::FoxgloveBridge)
+  rclcpp::init(argc, argv);
+  rclcpp::spin(std::make_shared<foxglove_bridge::FoxgloveBridge>());
+  rclcpp::shutdown();
+  return 0;
+}
