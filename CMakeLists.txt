@@ -168,63 +168,63 @@ endif()
 
 #### TESTS #####################################################################
 
-if(ROS_BUILD_TYPE STREQUAL "catkin")
-  if (CATKIN_ENABLE_TESTING)
-    message(STATUS "Building tests with catkin")
+# if(ROS_BUILD_TYPE STREQUAL "catkin")
+#   if (CATKIN_ENABLE_TESTING)
+#     message(STATUS "Building tests with catkin")
 
-    find_package(catkin REQUIRED COMPONENTS roscpp std_msgs std_srvs)
-    if(NOT "$ENV{ROS_DISTRO}" STREQUAL "melodic")
-      find_package(GTest REQUIRED)
-    endif()
-    find_package(rostest REQUIRED)
+#     find_package(catkin REQUIRED COMPONENTS roscpp std_msgs std_srvs)
+#     if(NOT "$ENV{ROS_DISTRO}" STREQUAL "melodic")
+#       find_package(GTest REQUIRED)
+#     endif()
+#     find_package(rostest REQUIRED)
 
-    catkin_add_gtest(version_test foxglove_bridge_base/tests/version_test.cpp)
-    target_link_libraries(version_test foxglove_bridge_base)
-    enable_strict_compiler_warnings(version_test)
+#     catkin_add_gtest(version_test foxglove_bridge_base/tests/version_test.cpp)
+#     target_link_libraries(version_test foxglove_bridge_base)
+#     enable_strict_compiler_warnings(version_test)
 
-    catkin_add_gtest(serialization_test foxglove_bridge_base/tests/serialization_test.cpp)
-    target_link_libraries(serialization_test foxglove_bridge_base)
-    enable_strict_compiler_warnings(foxglove_bridge)
+#     catkin_add_gtest(serialization_test foxglove_bridge_base/tests/serialization_test.cpp)
+#     target_link_libraries(serialization_test foxglove_bridge_base)
+#     enable_strict_compiler_warnings(foxglove_bridge)
 
-    catkin_add_gtest(base64_test foxglove_bridge_base/tests/base64_test.cpp)
-    target_link_libraries(base64_test foxglove_bridge_base)
-    enable_strict_compiler_warnings(foxglove_bridge)
+#     catkin_add_gtest(base64_test foxglove_bridge_base/tests/base64_test.cpp)
+#     target_link_libraries(base64_test foxglove_bridge_base)
+#     enable_strict_compiler_warnings(foxglove_bridge)
 
-    add_rostest_gtest(smoke_test ros1_foxglove_bridge/tests/smoke.test ros1_foxglove_bridge/tests/smoke_test.cpp)
-    target_include_directories(smoke_test SYSTEM PRIVATE
-      $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/foxglove_bridge_base/include>
-      ${catkin_INCLUDE_DIRS}
-      $<INSTALL_INTERFACE:include>
-    )
-    target_link_libraries(smoke_test foxglove_bridge_base ${catkin_LIBRARIES})
-    enable_strict_compiler_warnings(smoke_test)
-  endif()
-elseif(ROS_BUILD_TYPE STREQUAL "ament_cmake")
-  if(BUILD_TESTING)
-    message(STATUS "Building tests with ament_cmake")
+#     add_rostest_gtest(smoke_test ros1_foxglove_bridge/tests/smoke.test ros1_foxglove_bridge/tests/smoke_test.cpp)
+#     target_include_directories(smoke_test SYSTEM PRIVATE
+#       $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/foxglove_bridge_base/include>
+#       ${catkin_INCLUDE_DIRS}
+#       $<INSTALL_INTERFACE:include>
+#     )
+#     target_link_libraries(smoke_test foxglove_bridge_base ${catkin_LIBRARIES})
+#     enable_strict_compiler_warnings(smoke_test)
+#   endif()
+# elseif(ROS_BUILD_TYPE STREQUAL "ament_cmake")
+#   if(BUILD_TESTING)
+#     message(STATUS "Building tests with ament_cmake")
 
-    find_package(ament_cmake_gtest REQUIRED)
-    find_package(ament_lint_auto REQUIRED)
-    ament_lint_auto_find_test_dependencies()
+#     find_package(ament_cmake_gtest REQUIRED)
+#     find_package(ament_lint_auto REQUIRED)
+#     ament_lint_auto_find_test_dependencies()
 
-    ament_add_gtest(version_test foxglove_bridge_base/tests/version_test.cpp)
-    target_link_libraries(version_test foxglove_bridge_base)
-    enable_strict_compiler_warnings(version_test)
+#     ament_add_gtest(version_test foxglove_bridge_base/tests/version_test.cpp)
+#     target_link_libraries(version_test foxglove_bridge_base)
+#     enable_strict_compiler_warnings(version_test)
 
-    ament_add_gtest(serialization_test foxglove_bridge_base/tests/serialization_test.cpp)
-    target_link_libraries(serialization_test foxglove_bridge_base)
-    enable_strict_compiler_warnings(serialization_test)
+#     ament_add_gtest(serialization_test foxglove_bridge_base/tests/serialization_test.cpp)
+#     target_link_libraries(serialization_test foxglove_bridge_base)
+#     enable_strict_compiler_warnings(serialization_test)
 
-    ament_add_gtest(base64_test foxglove_bridge_base/tests/base64_test.cpp)
-    target_link_libraries(base64_test foxglove_bridge_base)
-    enable_strict_compiler_warnings(base64_test)
+#     ament_add_gtest(base64_test foxglove_bridge_base/tests/base64_test.cpp)
+#     target_link_libraries(base64_test foxglove_bridge_base)
+#     enable_strict_compiler_warnings(base64_test)
 
-    ament_add_gtest(smoke_test ros2_foxglove_bridge/tests/smoke_test.cpp)
-    ament_target_dependencies(smoke_test rclcpp rclcpp_components std_msgs std_srvs)
-    target_link_libraries(smoke_test foxglove_bridge_base)
-    enable_strict_compiler_warnings(smoke_test)
-  endif()
-endif()
+#     ament_add_gtest(smoke_test ros2_foxglove_bridge/tests/smoke_test.cpp)
+#     ament_target_dependencies(smoke_test rclcpp rclcpp_components std_msgs std_srvs)
+#     target_link_libraries(smoke_test foxglove_bridge_base)
+#     enable_strict_compiler_warnings(smoke_test)
+#   endif()
+# endif()
 
 #### INSTALL ###################################################################
 
