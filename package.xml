@@ -24,13 +24,13 @@
     <!-- <depend condition="$ROS_VERSION == 2">rclcpp_components</depend> -->
 
     <!-- Test dependencies -->
-    <test_depend condition="$ROS_VERSION == 1">gtest</test_depend>
+    <!-- <test_depend condition="$ROS_VERSION == 1">gtest</test_depend>
     <test_depend condition="$ROS_VERSION == 1">rostest</test_depend>
     <test_depend condition="$ROS_VERSION == 1">rosunit</test_depend>
     <test_depend condition="$ROS_VERSION == 2">ament_cmake_gtest</test_depend>
     <test_depend condition="$ROS_VERSION == 2">ament_lint_auto</test_depend>
     <test_depend>std_msgs</test_depend>
-    <test_depend>std_srvs</test_depend>
+    <test_depend>std_srvs</test_depend> -->
 
     <!-- Common dependencies -->
     <build_depend>asio</build_depend>
